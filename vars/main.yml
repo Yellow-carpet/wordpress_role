@@ -1,0 +1,9 @@
+---
+# vars file for wordpress_role
+#
+network_name: wordpress_net
+wordpress_container: wordpress
+mysql_container: db
+wordpress_port: 8080
+wordpress_volume: wordpress_vol
+mysql_volume: mysql_vol

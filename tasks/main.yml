@@ -1,0 +1,36 @@
+---
+# tasks file for wordpress_role
+#
+- name: Create Network
+  docker_network:
+    name: "{{ network_name }}"
+
+- name: Deploy Wordpress
+  docker_container:
+    name: "{{ wordpress_container }}"
+    image: wordpress:latest
+    ports:
+      - "{{ wordpress_port }}:80"
+    networks:
+      - name: "{{ network_name }}"
+    volumes:
+      - "{{ wordpress_volume }}:/var/www/html"
+    env:
+      WORDPRESS_DB_HOST: "db"
+      WORDPRESS_DB_USER: "exampleuser"
+      WORDPRESS_DB_PASSWORD: "examplepass"
+      WORDPRESS_DB_NAME: "exampledb"
+
+- name: Deploy MYSQL
+  docker_container:
+    name: "{{ mysql_container }}"
+    image: mysql:5.7
+    networks:
+      - name: "{{ network_name }}"
+    volumes:
+      - "{{ mysql_volume }}:/var/lib/mysql"
+    env:
+      MYSQL_DATABASE: "exampledb"
+      MYSQL_USER: "exampleuser"
+      MYSQL_PASSWORD: "examplepass"
+      MYSQL_ROOT_PASSWORD: 'root'
