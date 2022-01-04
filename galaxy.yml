@@ -1,0 +1,17 @@
+---
+namespace: community
+name: wordpress_role
+version: 1.0.0
+readme: README.md
+authors:
+  - Djema Sofiane
+description: install wordpress with ansible
+license_file: COPYING
+tags:
+  - v1
+repository: https://github.com/Yellow-carpet/wordpress_role.git
+documentation: https://github.com/Yellow-carpet/wordpress_role.git
+homepage: https://github.com/Yellow-carpet/wordpress_role.git
+issues: https://github.com/Yellow-carpet/wordpress_role.git
+build_ignore:
+  - .gitignore
